@@ -21,11 +21,11 @@ Also of use would be programming references for I/O and file processing librarie
 
 Of course, for technologies like these, you’re likely to find a lot of additional supplements on the web.
 
-## For Submission: File Database Mini-Stack
+## For Submission: File Database Proto-Stack
 For this assignment, give yourselves and your groups a taste of what it would be like to work with data at a file level by taking a stab at performing the database operations described below.
 
 ### Warm Up to the Challenge: _netflix-practice.md_
-Walk through the [Netflix Prize file database mini-stack case study](./netflix-prize-file-example)—ideally together as a group, so you can help each other through each example—and do a little prep by doing some freeform exploration of that data using the techniques shown therein. Ideally, everyone in the group can download and preprocess the data firsthand; if this is not feasible for some, designate one or more group members to serve as “hosts” for your work, and collaborate around a screenshare with them.
+Walk through the [Netflix Prize file database proto-stack case study](./netflix-prize-file-example)—ideally together as a group, so you can help each other through each example—and do a little prep by doing some freeform exploration of that data using the techniques shown therein. Ideally, everyone in the group can download and preprocess the data firsthand; if this is not feasible for some, designate one or more group members to serve as “hosts” for your work, and collaborate around a screenshare with them.
 
 In a Markdown file on your repository called _netflix-practice.md_, do the following:
 1. Write up two (2) movie queries—things like movies with certain titles or title patterns, movies released on one or more given years, etc. Provide those queries and show their results (or a subset of them, if there are too many to list).
@@ -54,7 +54,7 @@ As before, it is also useful to contextualize things by envisioning an applicati
 4. Query by pure command facilitated by pre-processing (with accompanying preprocessor of course)
 5. “Compound” query that requires a manual combination of commands or programs
 
-### Take Stock of Your Mini-Stack: _report.md_
+### Take Stock of Your Proto-Stack: _report.md_
 Finally, finish up the exercise by writing a small technical report on everything that you did. Call this document _report.md_ and answer the following questions:
 1. Which operations/commands/programs were the most difficult to implement? Which were easiest? Provide brief rationales for your responses.
 2. In what way do the size and ordering of your data files affect the speed of an individual operation?
@@ -74,7 +74,7 @@ Commit everything to GitHub. Reiterating the deliverables, they are:
 - [_.gitignore_](#let-there-bedata-aboutmd-gitignore) (revised from what is already provided)
 - [_queries.md_](#feel-the-power-queriesmd)
 - Custom [file-processing/querying code](#feel-the-power-queriesmd)
-- [_report.md_](#take-stock-of-your-mini-stack-reportmd)
+- [_report.md_](#take-stock-of-your-proto-stack-reportmd)
 
 Review the instructions in the deliverables’ respective sections to see what goes in them.
 
