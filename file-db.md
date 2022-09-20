@@ -1,7 +1,7 @@
-**CMSI 3520** Database Systems, Fall 2021
+**CMSI 3520** Database Systems, Fall 2022
 
-# Assignment 0927
-Before diving fully into database systems per se, we make one stopover “under the hood” by looking at data management in terms of working with files alone. The premise here is that all database systems, regardless of model, philosophy, or generation, ultimately store their data in files. Thus, it is of value to explore what it takes to work with files _directly_—in a way, to write the very beginnings of your own database system.
+# Assignment 1003
+Before diving fully into database systems per se, we make one stopover “under the hood” by looking at data management in terms of working with files alone. The premise here is that all database systems, regardless of model, philosophy, or generation, ultimately store their data in files. Thus, it is of value to explore what it takes to work with files _directly_—in a way, to get an additional taste of what is involved in implementing your own database system.
 
 ## Background Reading
 The Elmasri & Navathe book touches on this conceptually in their Chapter 1 section on “Advantages of Using the DBMS Approach.” If you want a peek into how database management systems _do_ organize their data files in order to do what they do efficiently, you can skim Part 7 _File Structures, Hashing, Indexing, and Physical Database Design_ to get an idea of how this is done. Think of this assignment as a microcosm of that material.
@@ -14,9 +14,9 @@ Direct assistance for the action items in this assignment can be found (among ot
 * [A tutorial](https://www.grymoire.com/Unix/Awk.html) on [awk](https://man7.org/linux/man-pages/man1/awk.1p.html)
 
 Also of use would be programming references for I/O and file processing libraries of whatever programming language you might choose, such as:
-* [Python](https://docs.python.org/3.7/tutorial/inputoutput.html#reading-and-writing-files) (take a look at their [csv](https://docs.python.org/3.7/library/csv.html) library too)
+* [Python](https://docs.python.org/3.10/tutorial/inputoutput.html#reading-and-writing-files) (take a look at their [csv](https://docs.python.org/3.10/library/csv.html) library too)
 * [NodeJS](https://nodejs.org/api/fs.html)—particularly handy if your dataset’s files are in [JSON format](https://stackabuse.com/reading-and-writing-json-files-with-node-js/)
-* [Java](https://docs.oracle.com/javase/tutorial/essential/io/file.html)—just don’t tell Toal (lest you become a…tattle-Toal?)
+* [Java](https://docs.oracle.com/javase/tutorial/essential/io/file.html)—just don’t tell Dr. Toal (lest you become a…tattle-Toal?)
 * (though I doubt any of you will pick this one) [C](https://en.wikipedia.org/wiki/C_file_input/output)—unless you’re taking this as a challenge and want to legit say [“Hold my avocado 🥑”](https://www.thrillist.com/news/nation/hold-my-avocado-meme-origin)
 
 Of course, for technologies like these, you’re likely to find a lot of additional supplements on the web.
@@ -25,7 +25,7 @@ Of course, for technologies like these, you’re likely to find a lot of additio
 For this assignment, give yourselves and your groups a taste of what it would be like to work with data at a file level by taking a stab at performing the database operations described below.
 
 ### Warm Up to the Challenge: _netflix-practice.md_
-Walk through the [Netflix Prize file database proto-stack case study](./netflix-prize-file-example)—ideally together as a group, so you can help each other through each example—and do a little prep by doing some freeform exploration of that data using the techniques shown therein. Ideally, everyone in the group can download and preprocess the data firsthand; if this is not feasible for some, designate one or more group members to serve as “hosts” for your work, and collaborate around a screenshare with them.
+Walk through the [Netflix Prize file database proto-stack case study](./netflix-prize-file-example)—ideally together as a group, so you can help each other through each example—and do a little prep by doing some freeform exploration of that data using the techniques shown therein. Ideally, everyone in the group can download and preprocess the data firsthand; if this is not feasible for some, designate one or more group members to serve as “hosts” for your work, and collaborate in person or around a screenshare with them.
 
 In a Markdown file on your repository called _netflix-practice.md_, do the following:
 1. Write up two (2) movie queries—things like movies with certain titles or title patterns, movies released on one or more given years, etc. Provide those queries and show their results (or a subset of them, if there are too many to list).
@@ -65,7 +65,7 @@ Finally, finish up the exercise by writing a small technical report on everythin
 ## Operational Directives/Suggestions
 - Make sure to divide the implementation work relatively evenly within your group. Most groups have four (4) members and you will notice that there are eight (8) total “coding” tasks (three for Netflix, five for your dataset). Thus, letting individual group members “own” around two (2) tasks each will help spread the load. Of course you can all help each other as needed, but let each person take point on two items.
 - Once more, do _not_ commit the original files to the repository—they may be too large for that. Provide links instead. Edit _.gitignore_ to avoid accidental commits.
-- Not everyone’s computer might have enough storage or other capacity—AWS is an option but watch your credits; or, designate someone as the “host” for doing work and find ways to collaborate over a screenshare and (friendly) remote control of a classmate’s screen.
+- Not everyone’s computer might have enough storage or other capacity; in this case, designate someone as the “host” for doing work and find ways to collaborate and take turns “driving.”
 
 ## How to Turn it In
 Commit everything to GitHub. Reiterating the deliverables, they are:
@@ -79,7 +79,7 @@ Commit everything to GitHub. Reiterating the deliverables, they are:
 Review the instructions in the deliverables’ respective sections to see what goes in them.
 
 ## Specific Point Allocations
-This assignment is scored according to outcomes _1a_, _1d_, _2b_, _3c_, _3d_, and _4a_ to _4f_ in the [syllabus](https://dondi.lmu.build/fall2021/cmsi3520/cmsi3520-fall2021-syllabus.pdf). For this particular assignment, graded categories are as follows:
+This assignment is scored according to outcomes _1a_, _1d_, _2b_, _3c_, _3d_, and _4a_ to _4f_ in the [syllabus](https://dondi.lmu.build/fall2022/cmsi3520/cmsi3520-fall2022-syllabus.pdf). For this particular assignment, graded categories are as follows:
 
 | Category | Points | Outcomes |
 | -------- | -----: | -------- |

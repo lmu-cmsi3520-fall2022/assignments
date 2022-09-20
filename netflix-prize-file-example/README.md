@@ -1,7 +1,7 @@
-**CMSI 3520** Database Systems, Fall 2021
+**CMSI 3520** Database Systems, Fall 2022
 
-# Netflix Prize File Database Mini-Stack Example
-This folder and README contains sample commands and code that correspond to what is being requested for the [File Database Mini-Stack assignment](../README.md). To save repository space, the data files themselves are _not_ included here: before trying out these commands and programs, please [download the files](https://www.kaggle.com/netflix-inc/netflix-prize-data) into this folder first.
+# Netflix Prize File Database Proto-Stack Example
+This folder and README contains sample commands and code that correspond to what is being requested for the [File Database Proto-Stack assignment](../README.md). To save repository space, the data files themselves are _not_ included here: before trying out these commands and programs, please [download the files](https://www.kaggle.com/netflix-inc/netflix-prize-data) into this folder first.
 
 To avoid accidental committing of these files, a _.gitignore_ file has been placed here as well. We are definitely not taking an extra two gigabytes of repository space lightly! (potentially nearly double that, if you run the pre-processing example as well)
 
