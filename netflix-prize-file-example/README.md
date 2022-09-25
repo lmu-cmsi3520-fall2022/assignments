@@ -38,6 +38,8 @@ If the `\d*,\d*,` approach feels hacky to you, one might be able to turn to some
 
 …the `-F,` argument tells `awk` to separate the fields out by commas, thus making `$1` represent the movie ID, `$2` the release year, and `$3` the movie title…mostly 😅 (can you think of why there is a “mostly” qualifier to that?)
 
+> ⏱ **Timeout!** Some platforms may cough up an error on the command above, using the original _movie_titles.csv_ file. If so (heck even if not so), now is a good time to visit our [character encoding review](./encoding.md)! Use the information in that document to address this potential issue with `awk` 👌🏽
+
 #### Find _How Many_ Movies Match a Regular Expression
 With _movie_titles.csv_ being line-based, _counting_ results becomes a matter of sending the `grep` or `awk` output to `wc` by the handy-dandy pipe directive (`|`). Appending `| wc` to any of the commands above will tell you how many movies (lines) matched the preceding filter.
 

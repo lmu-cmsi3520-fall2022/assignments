@@ -1,5 +1,6 @@
 combined_data_*.txt
 movie_titles.csv
+movie_titles-utf8.csv
 probe.txt
 qualifying.txt
 ratings.csv
