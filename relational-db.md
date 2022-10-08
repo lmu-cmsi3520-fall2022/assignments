@@ -81,8 +81,6 @@ Submit these in a Markdown file called _queries.md_. All queries should be _doma
 4. An _aggregate_ query that provides counts for certain groups in your dataset using `GROUP BY` and `COUNT`
 5. A _ranking_ query that provides the “top” or “bottom” _n_ records based on some metric using `LIMIT`
 
-Five (5)-member groups are asked to do two (2) additional queries: one (1) more from either query type 1–2 and one (1) more of any query type 3–5, for the same total number of points overall.
-
 If inspiration strikes you, don’t stop at just the required queries. The more practice you get with SQL, the better. The ones that are given are only meant to provide the base coverage for this assignment.
 
 ### Get ScanDALous: _dal.*_
@@ -94,8 +92,6 @@ Since this is a mini-stack, we don’t expect your DAL to be full-featured. You 
 * One (1) domain-appropriate _retrieval_ function that, given some set of arguments, will return corresponding data matching those arguments—you may adapt one of the queries you wrote in [SQL Me This, Caped Crusader](#sql-me-this-caped-crusader-queriesmd) for this—pick some aspect of that query that would make sense as parameters so that the same function can be used for multiple queries of the same type
 * One (1) domain-appropriate “CUD” function (create, update, or delete) that modifies the database’s records, given some set of arguments
 
-Five (5)-member groups are asked to do one additional “CUD” function, for the same total number of points overall.
-
 A little extra credit will go to groups who implement each function using a opposite styles—one via raw/embedded/built SQL and another via object-relational mapping (ORM).
 
 ### Use the DAL, Luke
@@ -105,12 +101,10 @@ Write one (presumably short) program apiece that calls the retrieval and “CUD�
 * Call the underlying DAL function with those arguments
 * Report any errors that may have occurred
 
-As a natural consequence of having three (3) DAL functions instead of two (2), five (5)-member groups will end up doing an additional DAL-calling program, for the same total number of points overall.
-
 Ultimately, these programs serve as “wrappers” to the DAL functions. The real magic happens in the DAL functions’ implementations. Again, refer to the [Netflix Prize example](./netflix-prize-relational-example) as needed.
 
 ## Operational Directives/Suggestions
-- Make sure to divide the implementation work relatively evenly within your group. Most groups have four (4) members and there is plenty of work to spread around. Let each member “run point” on some set of tasks so that someone is on top of things but of course allow yourselves to help each other.
+- Make sure to divide the implementation work relatively evenly within your group. Let each member “run point” on some set of tasks so that someone is on top of things but of course allow yourselves to help each other.
 - Once more, do _not_ commit dataset files to the repository—they may be too large for that. Provide links instead. Edit _.gitignore_ to avoid accidental commits.
 - Not everyone’s computer might have enough storage or other capacity—AWS is an option but watch your credits; or, designate someone as the “host” for doing work and find ways to collaborate over a screenshare and (friendly) remote control of a classmate’s screen.
 
@@ -142,15 +136,12 @@ This assignment is scored according to outcomes _1a_–_1c_, _3a_–_3d_, and _4
 | _schema.sql_ | 5 points | _1b_, _1c_, _3c_, _4a_ |
 | Loader programs | 10 points | _3a_, _3b_, _4a_–_4d_ |
 | _queries.md_ correctly implements the requested operations | 4 points each, 20 points total | _1b_, _1c_, _3c_, _4a_–_4d_ |
-| **5-member groups:** 7 queries total | _or_ 2 + 3 + 3 + 3 + 3 + 3 + 3 | |
 | DAL module | 21 points total | _3c_, _3d_, _4a_–_4d_ |
 | • Correct, well-separated configuration and setup | 7 points | |
 | • Domain-appropriate retrieval function | 7 points | |
 | • Domain-approprate “CUD” function | 7 points | |
-| **5-member groups:** One more “CUD” function | _or_ 4 + 5 + 5 | |
 | • Mix of implementation styles | up to 3 extra | 😎 |
 | DAL-calling programs | 3 points each, 6 points total | _3d_, _4a_–_4d_ |
-| **5-member groups:** One more DAL-calling program | _or_ 2 + 2 + 2 | |
 | Hard-to-maintain or error-prone code | deduction only | _4b_ |
 | Hard-to-read code | deduction only | _4c_ |
 | Version control | deduction only | _4e_ |
