@@ -20,7 +20,7 @@ For [schema.sql](./schema.sql) there is also something new that wasn’t seen in
 ## Set the Table(s)
 Once your database has been planned out, it’s time to actually set it up in a running database server. Assuming that you have gotten a [PostgreSQL server up and running](http://dondi.lmu.build/share/db/postgresql-setup-day.pdf), you can pretty much feed your schema file to PostgreSQL via _psql_:
 
-    psql postgresql://localhost/postgres -f schema.sql
+    psql -f schema.sql postgresql://localhost/postgres
 
 The example above uses the `-f` option of _psql_ to send a file containing SQL statements directly into the database.
 
