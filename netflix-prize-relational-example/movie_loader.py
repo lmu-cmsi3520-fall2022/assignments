@@ -31,5 +31,5 @@ with open(MOVIE_SOURCE, 'r+', encoding='iso-8859-1') as f:
 # counter based on the largest one that has been loaded so far.
 print('SELECT setval(\'movie_id_seq\', (SELECT MAX(id) from movie));')
 
-# _Now_ we can commit our transation.
+# _Now_ we can commit our transaction.
 print('COMMIT;')
