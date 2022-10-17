@@ -166,7 +166,7 @@ postgres=# SELECT DISTINCT title FROM movie, rating WHERE movie.id = rating.movi
 
 * List the year and rating count for movies released before 1910 or after 2000, sorted descending by year:
 ```
-postgres=# SELECT year, count(*) FROM movie, rating WHERE movie.id = rating.movie_id AND (year < 1910 OR year > 2000) GROUP BY year ORDER BY year DESC;
+postgres=# SELECT year, COUNT(*) FROM movie, rating WHERE movie.id = rating.movie_id AND (year < 1910 OR year > 2000) GROUP BY year ORDER BY year DESC;
  year |  count   
 ------+----------
  2005 |  1983802
