@@ -3,6 +3,16 @@
 # Assignment 1107
 For this assignment, we shift our attention to one of the most prominent alternatives to the relational model—a document-centric database. You may choose between two such systems for this assignment: [MongoDB](https://www.mongodb.com) or [ElasticSearch](https://www.elastic.co/elasticsearch/).
 
+To assist in your decision, you may want to review [this video overview of database paradigms](https://youtu.be/W2Z7fbCLSTw) to get a quick recap of how MongoDB and ElasticSearch differ. In addition, here is an informal summary that compares the two:
+
+|     | MongoDB  | ElasticSearch |
+| --- | -------- | ------------- |
+| _Ease of use_ (based on observations off prior students) | Generally easier to learn and use | Harder to learn and use |
+| _Performance_ | Slows down notably with large databases and cross-collection lookups | Built for speed as a central feature |
+| _Interaction_ | Command line: _mongosh_ corresponds to _psql_ | Web service only: must use a web service client like _curl_ or [Postman](https://www.postman.com) |
+| _Industry use_ | Some adoption; best used for rapid prototyping and smaller-scale systems | Widely used for search, mirroring other systems |
+
+
 As mentioned previously, this assignment has a similar structure to all of the mini-stack assignments. You are also to stay with the same group and dataset.
 
 ## Background Reading
