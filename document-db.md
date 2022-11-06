@@ -141,7 +141,6 @@ This assignment is scored according to outcomes _1a_, _1d_, _3a_–_3d_, and _4a
 | • Domain-appropriate retrieval function | 7 points | |
 | • Domain-approprate “CUD” function | 7 points | |
 | DAL-calling programs | 3 points each, 6 points total | _3d_, _4a_–_4d_ |
-| **5-member groups:** One more DAL-calling program | _or_ 2 + 2 + 2 | |
 | Hard-to-maintain or error-prone code | deduction only | _4b_ |
 | Hard-to-read code | deduction only | _4c_ |
 | Version control | deduction only | _4e_ |
