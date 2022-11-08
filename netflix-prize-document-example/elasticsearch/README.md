@@ -49,7 +49,7 @@ DELETE http://localhost:9200/movies
 Time to load up the index! We load in two phases: first, we send the movies (without ratings) to the index, then we’ll load the ratings into each movie.
 
 ### The Incredible *_bulk*
-For [_movie_loader.py_](./movie_loader.py), we make use of an index’s [*_bulk* endpont](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html): sort of a “shortcut” endpoint that can take a large chunk of JSON representing multiple documents.
+For [_movie_loader.py_](./movie_loader.py), we make use of an index’s [*_bulk* endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html): sort of a “shortcut” endpoint that can take a large chunk of JSON representing multiple documents.
 
 *_bulk* does have its limits, but fortunately our _movie_titles.csv_ file is within those limits. If this turned out to be too large for a single *_bulk* call, we would need to write some code the break up the output into more digestible chunks.
 
