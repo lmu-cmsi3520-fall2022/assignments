@@ -7,6 +7,6 @@ This repository hosts a public copy of the assignment write-ups for this course 
 - [Assignment 0921](./key-value-db.md) Key-value database code-along
 - [Assignment 1003](./file-db.md) File database proto-stack
 - [Assignment 1019](./relational-db.md) Relational database mini-stack
-- **Assignment 1107** Document-centric database mini-stack
-- **Assignment 1121** Graph database mini-stack
+- [Assignment 1107](./document-db.md) Document-centric database mini-stack
+- [Assignment 1121](./graph-db.md) Graph database mini-stack
 - **Assignment 1212** Full database SDK
