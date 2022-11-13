@@ -15,7 +15,7 @@ Elmasri & Navathe’s NOSQL chapter 24 includes coverage of graph databases, als
 ### Technical/Operational Reading
 Direct technical assistance for the action items in this assignment can be found primarily in the [Neo4j](https://neo4j.com/docs/) documentation site. Documentation types range from initial [Getting Started](https://neo4j.com/docs/getting-started/current/) tutorial to a full-blown [Operations Manual](https://neo4j.com/docs/operations-manual/current/).
 
-Separate but similar are the [Neo4j Developer Guides](https://neo4j.com/developer/get-started/)—confusingly, these have overlapping content as the official docs but are distinct from them, and they have embedded videos if that suits your learning style better.
+Separate but similar are the [Neo4j Developer Guides](https://neo4j.com/developer/get-started/)—confusingly, these have overlapping content as the official docs but are distinct from them, and they have embedded videos if that suits your content consumption preference better.
 
 Neo4j shares MongoDB’s terminology choice of “drivers” as the name for libraries that allow general-purpose programs to communicate with a Neo4j server. [Multiple languages are supported](https://neo4j.com/developer/language-guides/) and for our [Netflix Prize graph database mini-stack case study](./netflix-prize-graph-example), examples are provided for [Python](https://neo4j.com/developer/python/) and [JavaScript](https://neo4j.com/developer/javascript/). If you choose to use [Java](https://neo4j.com/developer/java/), Neo4j also provides an [“OGM” library](https://neo4j.com/developer/neo4j-ogm/) (“Object Graph Mapper,” in the vein of “Object Relational Mapper”).
 
@@ -88,7 +88,7 @@ As mentioned in the [DAL instructions](#connect-the-dal-dal), it isn’t very fe
 The same notes and suggestions remain from before:
 - Make sure to divide the implementation work relatively evenly within your group. Most groups have four (4) members and there is plenty of work to spread around. Let each member “run point” on some set of tasks so that someone is on top of things but of course allow yourselves to help each other.
 - Once more, do _not_ commit dataset files to the repository—they may be too large for that. Provide links instead. Edit _.gitignore_ to avoid accidental commits.
-- Not everyone’s computer might have enough storage or other capacity—AWS is an option but watch your credits; or, designate someone as the “host” for doing work and find ways to collaborate over a screenshare and (friendly) remote control of a classmate’s screen.
+- Not everyone’s computer might have enough storage or other capacity—if necessary, designate someone as the “host” for doing work and find ways to collaborate either in person or over a screenshare with (friendly) remote control of a classmate’s screen.
 
 ## How to Turn it In
 Commit everything to GitHub. Reiterating the deliverables, they are:
