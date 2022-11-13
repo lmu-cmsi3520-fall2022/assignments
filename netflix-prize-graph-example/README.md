@@ -310,6 +310,11 @@ RETURN m, r, v
 
 The possibilities go on and on…the fun never stops!
 
+### If You Match It, They Will Relate (by default)
+At this point, it’s useful to point out a behavior of the Neo4j Browser web app that may surprise you: when it returns a query graph result, it displays _all_ of the relationships between two returned nodes, _even if they weren’t part of the `MATCH`_. This aligns with the general ethos that graph databases may reveal insights about nodes which one might not expect. It doesn’t quite help, though, if you want to just make sure that your queries are correct.
+
+You can disable this behavior by unchecking the _Connect result nodes_ setting in Neo4j Browser’s _Browser Settings_ drawer. The setting can also be read/written programmatically; full details can be found here: https://neo4j.com/docs/browser-manual/current/operations/browser-settings/
+
 ## Even. Moar. Clauses.
 Although `MATCH`, `WHERE`, and `RETURN` (with the occasional `ORDER BY` if you want that non-graph-database feeling) are likely to be your primary Cypher building blocks, they only [scratch the surface](https://neo4j.com/docs/cypher-manual/4.1/clauses/) of the language. Do take a peek to see more of what Cypher can do, ranging from what may feel familiar:
 
