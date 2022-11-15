@@ -35,23 +35,21 @@ Similarly to document-centric databases, graph databases do not need a schema up
 In Node4j, instantiating ad hoc nodes and edges involves the Cypher [CREATE](https://neo4j.com/developer/cypher/updating/#_inserting_data_with_cypher) statement. If you create nodes or edges with new labels, that’s equivalent to defining a new type of node or relationship (since the label acts very much like a “type”). Deleting a “type” is pretty much deleting all nodes or edges with a given label, via Cypher’s [DELETE](https://neo4j.com/developer/cypher/updating/#cypher-delete) statement.
 
 ## Mass Co-node-sumption
-Using [CREATE](https://neo4j.com/developer/cypher/updating/#_inserting_data_with_cypher) is a lot like using `INSERT` in SQL: it adds data one at a time. However, as we’ve seen in other systems, one-at-a-time isn’t the most efficient way to add data. Neo4j has the ability to import nodes and edges from comma-separated value (CSV) files; for smaller files, a [LOAD CSV](https://neo4j.com/docs/cypher-manual/4.1/clauses/load-csv/) statement is available. For something the size of our Netflix Prize data, we want something beefier—and this is available via [_neo4j-admin import_](https://neo4j.com/docs/operations-manual/current/tools/import/) on the command line.
+Using [CREATE](https://neo4j.com/developer/cypher/updating/#_inserting_data_with_cypher) is a lot like using `INSERT` in SQL: it adds data one at a time. However, as we’ve seen in other systems, one-at-a-time isn’t the most efficient way to add data. Neo4j has the ability to import nodes and edges from comma-separated value (CSV) files; for smaller files, a [LOAD CSV](https://neo4j.com/docs/cypher-manual/4.1/clauses/load-csv/) statement is available. For something the size of our Netflix Prize data, we want something beefier—and this is available via [_neo4j-admin database import full_](https://neo4j.com/docs/operations-manual/current/tools/import/) on the command line.
 
-The _neo4j-admin import_ command handles the Netflix Prize data with aplomb, but this capacity comes with a major condition: it can only do this on a _new, unused_ database. Thus, try to get comfortable with putting up or clearing out Neo4j setups first before giving this a shot.
+The _neo4j-admin database import full_ command handles the Netflix Prize data with aplomb, but this capacity comes with a major condition: it can only do this on a _new, unused_ database. Thus, try to get comfortable with putting up or clearing out Neo4j setups first before giving this a shot.
 
 Assuming a level of comfort with setting up and configuring Neo4j (see the [setup guide](http://dondi.lmu.build/share/db/neo4j-setup-day.pdf) for specifics), importing the Netflix Prize data involves the following steps:
 
 1. Set up a fresh “layout” and configuration file for Neo4j
-2. Start the server to let it initialize the file structure
-3. _Don’t connect or login_—stop the server once startup is complete
-4. Run the _neo4j-admin import_ command while the server is stopped
+2. Run the _neo4j-admin database import full_ command before running the server for the first time
 
-In order for _neo4j-admin import_ to do its work, it needs to be told how to interpret the CSV files that it is given. The key things to extract here are nodes and edges (relationships)—for our case study, that means we have to tell Neo4j how `:Movie` nodes, `:Viewer` nodes, and `:RATED` edges are derived from our dataset.
+In order for _neo4j-admin database import full_ to do its work, it needs to be told how to interpret the CSV files that it is given. The key things to extract here are nodes and edges (relationships)—for our case study, that means we have to tell Neo4j how `:Movie` nodes, `:Viewer` nodes, and `:RATED` edges are derived from our dataset.
 
 This interpretation is provided by supplying custom _header files_ which state how each column of each CSV should be interpreted. An example is given [in Neo4j’s Data Import developer guide](https://neo4j.com/developer/guide-import-csv/#batch-importer) and this repository provides headers for the Netflix Prize data. [Full documentation for header files](https://neo4j.com/docs/operations-manual/current/tools/import/file-header-format/#import-tool-header-format) is also available.
 
 ### :Movie Nodes
-The _movie_titles.csv_ file pretty much corresponds to our planned :Movie nodes, but the file needs one tweak before _neo4j-admin import_ can consume it properly: titles with commas in them need to be delimited properly! The [_preprocess_movies.py_](./preprocess_movies.py) file will do that for us. The file that _it_ produces will be the one that we’ll feed to _neo4j-admin import_:
+The _movie_titles.csv_ file pretty much corresponds to our planned :Movie nodes, but the file needs one tweak before _neo4j-admin database import full_ can consume it properly: titles with commas in them need to be delimited properly! The [_preprocess_movies.py_](./preprocess_movies.py) file will do that for us. The file that _it_ produces will be the one that we’ll feed to _neo4j-admin database import full_:
 
     python3 preprocess_movies.py > movies.csv
 
@@ -75,7 +73,7 @@ With this, it should come as no surprise that the corresponding [_viewer_header.
 That’s all we know about a :Viewer node, with its single `viewerId` property which also serves as its node identifier.
 
 ### :RATED Edges
-Once the nodes are loaded, we’ll need to connect them. The ratings (_combined_data_) files provide this information, and for compatibility with _neo4j-admin import_ we will recruit an old friend: the [_preprocess_ratings.py_](./preprocess_ratings.py) program from way back in our file assignment (well, maybe not _that_ way back, but it sure feels like it, doesn’t it?). It turns out that this program does exactly what we want for creating :RATED relationship edges—it combs through the _combined_data_ files and creates a new file, _ratings.csv_, with movie IDs prepended to every rating. That way, each line of the new file has the movie that was rated, the viewer who gave the rating, and of course the actual rating value plus date:
+Once the nodes are loaded, we’ll need to connect them. The ratings (_combined_data_) files provide this information, and for compatibility with _neo4j-admin database import full_ we will recruit an old friend: the [_preprocess_ratings.py_](./preprocess_ratings.py) program from way back in our file assignment (well, maybe not _that_ way back, but it sure feels like it, doesn’t it?). It turns out that this program does exactly what we want for creating :RATED relationship edges—it combs through the _combined_data_ files and creates a new file, _ratings.csv_, with movie IDs prepended to every rating. That way, each line of the new file has the movie that was rated, the viewer who gave the rating, and of course the actual rating value plus date:
 
     python3 preprocess_ratings.py
 
@@ -87,9 +85,9 @@ We partner this file with [_rating_header.csv_](./rating_header.csv), which now 
 
 Note the two new symbols `:END_ID` and `:START_ID`—this is how we connect the nodes. Our schema, in one sentence, is “Viewer RATED Movie:” thus, the :RATED relationship _starts_ at a viewer and _ends_ at a movie. `:START_ID` and `:END_ID` indicate the _identifiers_ to use in order to match one node to the other.
 
-_neo4j-admin import_ will take those IDs, find them in the database, then _connect_ them with a relationship that has the `rating` and `dateRated` properties. So each line of _ratings.csv_ represents a :RATED edge from a viewer to a movie.
+_neo4j-admin database import full_ will take those IDs, find them in the database, then _connect_ them with a relationship that has the `rating` and `dateRated` properties. So each line of _ratings.csv_ represents a :RATED edge from a viewer to a movie.
 
-### Enter _node-admin import_
+### Enter _node-admin database import full_
 To recap, the full load will require six (6) files: three (3) that you’ll derive from the Netflix Prize data and three (3) that are in this repository:
 
 - _movies.csv_: Created by `python3 preprocess_movies.py > movies.csv`
@@ -99,24 +97,26 @@ To recap, the full load will require six (6) files: three (3) that you’ll deri
 - [_viewer_header.csv_](./viewer_header.csv)
 - [_rating_header.csv_](./rating_header.csv)
 
-To put them all together, we invoke the _neo4j-admin import_ command. It will need the same `NEO4J_CONF` environment variable that was given to your Neo4j server installation, so that it knows where to put things. The rest of the command is then about listing the nodes and edges/relationships that it should create:
+To put them all together, we invoke the _neo4j-admin database import full_ command. It will need the same `NEO4J_CONF` environment variable that was given to your Neo4j server installation, so that it knows where to put things. The rest of the command is then about listing the nodes and edges/relationships that it should create:
 
-    NEO4J_CONF=<absolute path to conf directory> neo4j-admin import --nodes=Movie="movie_header.csv,movies.csv" --nodes=Viewer="viewer_header.csv,viewers.csv" --relationships=RATED="rating_header.csv,ratings.csv" --id-type=STRING
+    NEO4J_CONF=<absolute path to conf directory> neo4j-admin database import full --nodes=Movie="movie_header.csv,movies.csv" --nodes=Viewer="viewer_header.csv,viewers.csv" --relationships=RATED="rating_header.csv,ratings.csv" --id-type=STRING
 
 The line above is meant for copy-paste-edit into your command line program (once the requisite files are all created). This is how the command breaks down:
 
 | Section | Meaning |
 | --- | --- |
 | `NEO4J_CONF=<absolute path to conf directory>` | Directory containing _neo4j.conf_ |
-| `neo4j-admin import` | The command itself |
+| `neo4j-admin database import full` | The command itself |
 | `--nodes=Movie="movie_header.csv,movies.csv"` | Specifies how to load :Movie nodes |
 | `--nodes=Viewer="viewer_header.csv,viewers.csv"` | Specifies how to load :Viewer nodes |
 | `--relationships=RATED="rating_header.csv,ratings.csv"` | Specifies how to load :RATED edges/relationships |
 | `--id-type=STRING` | Indicates that all IDs should be treated as strings |
 
-When you’re ready, unleash _neo4j-admin import_ and let it work. Speed should be on par with _mongoimport_ or our direct Elasticsearch web requests in _rating_loader.py_. You’ll get some progress feedback so you’ll know how far along you are.
+When you’re ready, unleash _neo4j-admin database import full_ and let it work. Speed should be on par with _mongoimport_ or our direct Elasticsearch web requests in _rating_loader.py_. You’ll get some progress feedback so you’ll know how far along you are.
 
 Upon completion, fire up _neo4j console_ and point your web browser to http://localhost:7474 to gain access to a humongous graph that connects 480,189 viewers to 17,770 movies in 100,480,507 ways. Make no mistake, this pushes the limits of what Neo4j can handle…and at times surpasses it.
+
+> _Note:_ Older versions of `neo4j-admin` take just the argument `import` to signal a database import command. If the version above does not appear to work, try substituting `neo4j-admin database import full` with `neo4j-admin import`.
 
 ## Can’t Graph This? Cypher Time!
 There’s a level of challenge to making an apples-to-apples comparison for the same query between graph databases and other types because part of what makes graph databases different is _the very type_ of query that one can ask. Further, the resource needs of Neo4j, again due to its nature, sometimes far exceeds the computing resources that we may have—another interesting point of comparison but we do want queries that return _something_ so we’ll sometimes need to reduce the scope of what we’re asking so that we don’t ask the system to the point of unresponsiveness.
