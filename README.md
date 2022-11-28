@@ -9,4 +9,4 @@ This repository hosts a public copy of the assignment write-ups for this course 
 - [Assignment 1019](./relational-db.md) Relational database mini-stack
 - [Assignment 1107](./document-db.md) Document-centric database mini-stack
 - [Assignment 1121](./graph-db.md) Graph database mini-stack
-- **Assignment 1212** Full database SDK
+- [Assignment 1212](./full-db.md) Full database SDK
